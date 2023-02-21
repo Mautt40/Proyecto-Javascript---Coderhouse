@@ -1,8 +1,98 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 body {
     background-image: url("../img/fondo.jpg");
-    background-size: cover;
+    background-size:cover;
     background-repeat: no-repeat;
-
-
+    height: 650px;
+    box-sizing: border-box;
 
 }
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 2px;
+  
+  }
+  
+  .div1 { 
+    background-color: rgba(3, 41, 3, 0.902);
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 360px ;
+
+  }
+  
+  img  {
+    display: flex;
+    justify-content: space-around;
+    width: 250px;
+    height:250px;
+    padding:10px ;
+    margin-top: 40px;
+    
+    
+
+  } 
+  
+  .div2 { grid-area: 2 / 1 / 3 / 2;
+    
+    height:auto;
+    background-color: rgba(3, 41, 3, 0.902);
+    color: beige;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    
+    
+  
+  }
+   
+  .div2 input{
+    margin-top: 30px;
+    width: 300px;
+    height:50px ;
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .div2 button{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 15px;
+    width: 150px;
+    height: 75px;
+    background-color: darkgreen;
+    color: gold;
+    border-style: none;
+    font-size: 15px;
+    
+  }
+
+  
+  .div2 button:hover{
+  color: #040404;
+  background-color: #ffb310;
+  box-shadow: 0 0 25px #aee301;
+  text-shadow: 0 0 15px #060606;
+  animation-delay: 0.5s;
+  }
+
+  .div3 { grid-area: 1 / 2 / 3 / 3; 
+ 
+  
+  
+  
+  
+  }
