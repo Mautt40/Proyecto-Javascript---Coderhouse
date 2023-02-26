@@ -12,11 +12,13 @@ body {
     background-repeat: no-repeat;
     height: 650px;
     box-sizing: border-box;
+    text-decoration: none;
+    align-content: center;
 
 }
 
 .parent {
-  display: grid;
+  display:flexbox;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 2px;
@@ -25,7 +27,7 @@ body {
   
   .div1 { 
     background-color: rgba(3, 41, 3, 0.902);
-    grid-area: 1 / 1 / 2 / 2;
+    grid-area: 1 / 1;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -45,8 +47,9 @@ body {
 
   } 
   
-  .div2 { grid-area: 2 / 1 / 3 / 2;
+  .div2 { grid-area: 2 ;
     
+    display: flex;
     height:auto;
     background-color: rgba(3, 41, 3, 0.902);
     color: beige;
@@ -67,14 +70,24 @@ body {
     font-size: 30px;
   }
   
+#btn_validar{
+  height: 55px;
+  background-color: rgb(5, 161, 24);
+  color: antiquewhite;
+
+}
+ #btn_validar:hover{
+  box-shadow: 0 0 25px #28a103;
+ }
+
   .div2 button{
     margin-top: 50px;
     margin-bottom: 50px;
     border-radius: 15px;
     width: 150px;
     height: 75px;
-    background-color: darkgreen;
-    color: gold;
+    background-color: rgb(191, 201, 8);
+    color: rgb(7, 7, 7);
     border-style: none;
     font-size: 15px;
     
@@ -89,10 +102,36 @@ body {
   animation-delay: 0.5s;
   }
 
-  .div3 { grid-area: 1 / 2 / 3 / 3; 
- 
-  
-  
-  
-  
-  }
+.estilo_parrafo {
+  background-color: brown;
+  font-size: 24px;
+  text-align: center;
+  color:bisque;
+  padding-top:15px ;
+  padding-bottom: 15px;
+
+
+}
+
+.bienvenido {
+  background-color: rgba(2, 51, 2, 0.877);
+  font-size: 35px;
+  text-align: center;
+  color:bisque;
+  padding-top:15px ;
+  padding-bottom: 15px;
+}
+
+a {
+  background-color: rgba(2, 51, 2, 0.877);
+  margin-left: 750px;
+  text-decoration: none;
+  color:rgb(248, 246, 246);
+  font-size: 35px;
+}
+
+.contenedor{
+  display: flex;
+  flex-direction: row;
+  row-gap: 15 px;
+}
