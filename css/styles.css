@@ -130,8 +130,26 @@ a {
   font-size: 35px;
 }
 
+.cabecera{
+  margin-top: 150px;
+  margin-left: 30px;
+  padding-left: 30px;
+}
+
 .contenedor{
   display: flex;
   flex-direction: row;
   row-gap: 15 px;
+  margin-left: 30PX;
+  width:fit-content;
+  height:max-content;
+}
+li.list-group-item {
+  background-color: #e2be6ffd;
+}
+.table{
+  margin-left: 30px;
+  background-color: rgba(28, 47, 21, 0.925);
+  height: 630px ;
+
 }

@@ -1,59 +1,4 @@
 
-
-
-//función puntaje// 
-
-function calculo_puntaje(servicios , litros,) {
-
-    litros=parseInt (litros);
-
-    if (servicios =="Super"|| servicios == "super" ){
-    let puntos = litros +  50;
-    return puntos
-    }
-    
-    else if(servicios == "Premium"|| servicios == "premium" ) {
-    let puntos = litros + 60;
-    return puntos
-    
-    }
-    
-    else if (servicios =="Biodiesel"||servicios == "biodiesel" ) {
-    let puntos = litros +  65;
-    return puntos 
-} 
- 
-}
-
-//funcion precio//
-
-function precio (litros,servicios){
-
- litros=parseInt (litros);
-
-    if (servicios =="Super"|| servicios == "super" ){
-        let costo = litros * 125;
-        return costo
-    }
-    
-    else if(servicios == "Premium"|| servicios == "premium" ) {
-        let costo = litros * 150;
-        return costo
-    
-    }
-    
-    else if (servicios =="Biodiesel"||servicios == "biodiesel" ) {
-        let costo  = litros * 165;
-        return costo
-
-    }
-        
-        let descuento = parseInt (costo) * 0.10;
-        let descuento_serviclub = parseInt (costo) - parseInt (descuento);
-     
-}
-
-
 class socio_dynamoclub {
 
     constructor (nombre,apellido,codigo){
@@ -64,9 +9,9 @@ class socio_dynamoclub {
 
 }
 }
+//alta de socios//
 
 let lista_socios = [];
-
 
 lista_socios.push( new socio_dynamoclub ("Roberto","Garcia", 25637));              
 lista_socios.push( new socio_dynamoclub ("Claudia", "Romero",23457));
@@ -74,181 +19,126 @@ lista_socios.push( new socio_dynamoclub ("Pablo", "Aranda", 35788,));
 lista_socios.push( new socio_dynamoclub  ("Lorena", "Silva", 45122,));
 
 
-
-
 function validar_socio (){
+
     const codigo_usuario = document.getElementById ("codigo_usuario").value;
     let mensaje = document.getElementById ("mensaje");
      
     for (let value in lista_socios ){
     
-const socio = lista_socios.findIndex(socio => socio.codigo === parseInt(codigo_usuario));   
+const socio = lista_socios.findIndex(socio_dynamoclub => socio_dynamoclub.codigo === parseInt(codigo_usuario));   
     
     if (socio !== -1 ){
 
-    /*let parrafo = document.createElement ("p")
-    parrafo.innerText = "Bienvenido al simulador de puntos Dynamo";
-    parrafo.style.fontSize = "45px"; 
-    mensaje.append (parrafo);*/
-
-    document.body.innerHTML = `<p class = "bienvenido"> Código verificado </p>
-
-                                <a href = "pages/simulador.html"> INGRESAR A LA PLATAFORMA </a>`
-                                                                                                    
-}
+        document.body.innerHTML = `<p class = "bienvenido"> Código verificado </p>
+                                
+                                   <a href = "pages/simulador.html"> INGRESAR A LA PLATAFORMA </a>`
+        }
 
     else {
 
     document.body.innerHTML = `<h2> Error de Usuario </h2>
-                            <p class= "estilo_parrafo"> Código de tarjeta no registrado </p>
-                            <a href ="index.html"> Volver </a>`
+                               <p class= "estilo_parrafo"> Código de tarjeta no  registrado </p>
+                               <a href ="index.html"> Volver </a>`
 }
 break
 }
-
 }
 
+// mensaje de bienvenida//
+
+let contenedor = document.getElementById ("cabecera");
+
+let bienvenida = document.createElement ("p")
+
+bienvenida.innerText = "Bienvenido al simulador de puntos Dynamo"  
+bienvenida.style.fontSize = "45px"; 
+
+cabecera.append(bienvenida);
 
 
+//funcionalidad card Super//
 
+let boton_super = document.getElementById ("litros_super");
+boton_super.addEventListener("click",function() {
+servicios = "super";
+});
 
+let litros_super = document.getElementById ("litros_super");
+litros_super.addEventListener ("change", function(e){ 
 
-//ALTA DE SOCIOS// <<<<<<<<<<<FUNCIÓN ADMINISTRADOR>>>>>>>>>>>>>
+console.log(e.target.value);
 
-/*
-let lista_socios = []
+if (servicios === "super"){ 
+precio = parseInt(e.target.value) * 125;
+puntos = parseInt(e.target.value) + 50;
 
-for (let i =0 ; i= i + 1;){
+console.log("precio " + precio)
+console.log("puntos " + puntos)
 
-    let nombre = ("Ingrese el nombre del Socio");
-    let apellido = ("Ingrese el apellido del Socio");
-    let codigo = ("Ingrese el código de tarjeta dynamoclub");
+}  
 
-    let socio_dynamoclub = new socio_dynamoclub (nombre, apellido, codigo);
+});
+let btn_calcular_super = document.getElementById ("calc_super");
+btn_calcular_super.addEventListener("click", function(e){
 
-    lista_socios.push (socio_dynamoclub);
+console.log ("cálculo super"); 
 
+});
+
+//funcionalidad card premium (que es igual a la otra pero con otros Id, rompiendo el paradigama KISS y el DRY, PERO NO ME SALIÓ DE OTRA MANERA y estoy aprendiendo :(
+
+let boton_premium = document.getElementById ("litros_premium");
+boton_premium.addEventListener("click", function() {  
+servicios = "premium";
+
+});
+
+let litros_premium = document.getElementById ("litros_premium");
+litros_premium.addEventListener ("change", function(e){ 
+
+console.log(e.target.value);
+
+if (servicios === "premium"){ 
+precio = parseInt(e.target.value) * 150;
+puntos = parseInt(e.target.value) + 70;
+
+console.log("precio " + precio)
+console.log("puntos " + puntos)
+}
+});  
+
+let btn_calcular_premium = document.getElementById ("cal_pre");
+btn_calcular_premium.addEventListener("click", function(e){
+
+console.log("cálculo premium");
+
+}); 
+
+// let = KISS DRY *3 - Card 3//
+
+let boton_bio = document.getElementById ("litros_bio");
+boton_bio.addEventListener("click",function() {
+servicios = "Biodiesel";
+});
+
+let litros_bio = document.getElementById ("litros_bio");
+litros_bio.addEventListener ("change", function(e){ 
+
+console.log(e.target.value);
+
+if (servicios === "biodiesel"){ 
+precio = parseInt(e.target.value) * 180;
+puntos = parseInt(e.target.value) + 90;
+
+console.log ("precio " + precio);
+console.log ("puntos " + puntos);
 } 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FIN ALTA ADMINISTRADOR>>>>>>>>>>>>>>>>>
-*/
-//servicios = prompt("Escoja el servicio que desea consumir: Super , Premium o Biodiesel");
+});
 
+let btn_calcular_bio = document.getElementById ("calc_bio");
+btn_calcular_bio.addEventListener("click", function(e){
 
-//validación servicios//
+console.log("cálculo biodiesel");
 
-
-//while (servicios != "super" && servicios != "premium" && servicios != "biodiesel"){
-//servicios = prompt("servicio no hallado, vuelva a intentarlo : 'Super' , 'Premium o 'Biodiesel'")} 
-
-
-
-
-
-//litros = prompt ("ingrese la cantidad de litros que desea comprar");
-//litros 
-
-//validación números//
-
-/*while (isNaN(litros) || litros <=1) {
-litros = alert ("no es un número válido")
-litros = prompt ("Debe ingresar un número válido")
-}
-
-const costo = precio (litros,servicios)
-let puntuacion = calculo_puntaje (servicios, litros);
-
-const socio = prompt ("Indique si es socio serviclub: 'si' o 'no'");
-const puntos_extra = identificador(socio);
-
-/*
-
-//IDENTIFICACIÓN DE SOCIOS//    
-
-
-
-function identificador(socio,) {
-    
-if (socio =="si"|| socio == "SI") {
-
-        
-    let puntuacion =calculo_puntaje (servicios, litros);
-        
-    let puntos_extra = (puntuacion * 2) - puntuacion ;
-        
-        return puntos_extra;
-
-    } else if (socio == "no"|| socio == "NO" ) {
-        return 0;
-    }
-
-    else{
-        
-        return 0;
-}
-    
-        
-    
-}
-*/
-
-
- 
-
-
-
-    //validacion_socio = alert ("Código no valido");
-
-
-
-
-
-
-
-
-
-
-
-
-
-//------------------------------------------------------------------------
-
-
-
-/*despedida = alert ("Gracias por su compra, lo esperamos nuevamente.")
-
-
-console.log("Ud. adquirió:", litros, "litros");
-console.log("de combustible:", servicios);256
-console.log("por un valor de: $", costo );
-console.log("logrando acumular:", puntuacion, "puntos");  
-console.log("beneficio serviclub", puntos_extra, "puntos")
-*/
-
-//console.log ("socio: ", validar );
-//console.log ("usuario", resultado_busqueda)
-//console.log("Total de puntos acumulados en su compra:", (puntuacion + puntos_extra), "puntos");
-
-//- eventos ----------------------------------------------------------------------
-
- 
-
-//VALIDACIÓN DE CÓDIGOS
-
-/*function validar_socio (socio_dynamoclub){
-
-return socio_dynamoclub.codigo == validacion_socio
-
-let validacion_socio = codigo_usuario
-
-let resultado_busqueda = lista_socios.find (validar_socio);
-
-if (resultado_busqueda != undefined ){
-
-}
-
-else  {
-    validacion_socio = alert ("Código no valido");
-
-}
-
-*/
+});
