@@ -130,12 +130,18 @@ a {
   font-size: 35px;
 }
 
-.cabecera{
+.cabecera {
   margin-top: 150px;
   margin-left: 30px;
   padding-left: 30px;
+  text-align: center;
 }
-
+p {
+  margin-left: 60PX;
+  color: antiquewhite;
+  font-weight: bold;
+  font-family: Verdana
+}
 .contenedor{
   display: flex;
   flex-direction: row;
@@ -144,12 +150,39 @@ a {
   width:fit-content;
   height:max-content;
 }
-li.list-group-item {
-  background-color: #e2be6ffd;
+
+#super{
+
+  background-color: rgb(2, 78, 20);
 }
+
+#premium{
+
+  
+  background-color: rgb(149, 231, 77);
+}
+
+#biodiesel{
+
+  background-color: #ffb310;
+}
+
 .table{
   margin-left: 30px;
   background-color: rgba(28, 47, 21, 0.925);
-  height: 630px ;
+  align-content: center;
+  width: 120px;
+  
 
+}
+.table th {
+  color: aliceblue;
+  width: 120px ;
+}
+
+.table tr{
+  color: aliceblue;
+}
+td{
+  width: 120px;
 }
