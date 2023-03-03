@@ -168,7 +168,7 @@ p {
 }
 
 .table{
-  margin-left: 30px;
+  margin-left: 25px;
   background-color: rgba(28, 47, 21, 0.925);
   align-content: center;
   width: 120px;
@@ -185,4 +185,24 @@ p {
 }
 td{
   width: 120px;
+}
+.card_footer{
+  margin-top: 40px;
+  text-align: center;
+}
+
+.card_footer input {
+
+  background-color: #060606;
+  color: aliceblue;
+  width:200px;
+  height:50px ;
+  border-radius: 30px;
+}
+.footer{
+  margin-top: 50px;
+  height: 300px;
+  width:1863.2px;
+  background-color: #055411bd;
+  box-sizing: border-box;
 }

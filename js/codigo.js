@@ -62,8 +62,6 @@ cabecera.append(bienvenida);
 
 let array = [];
 
-
-
 let boton_super = document.getElementById ("litros_super");
 boton_super.addEventListener("click",function() {
 combustible = "Super"    
@@ -84,6 +82,9 @@ let resultado = {
     precio: precio,
     puntos: puntos,
 }  
+
+
+
 
 array.push (resultado);
 console.log (array);
@@ -107,19 +108,21 @@ litros_premium.addEventListener ("change", function(e){
 
 precio = parseInt(e.target.value) * 150;
 puntos = parseInt(e.target.value) + 150;
-  
+
 let resultado_premium = {
-    
+
     combustible: combustible,
     Total_litros: (e.target.value),
     precio: precio,
     puntos: puntos,
 }  
 
+
 array.push (resultado_premium);
 console.log (array);
 
 mostrar_tabla();
+
 
 
 })
@@ -151,10 +154,11 @@ mostrar_tabla();
 });
 
 function mostrar_tabla (){
-    
+
     let tabla = document.getElementById ("tbody");
     tabla.innerHTML = "";
 
+    
     for (let resultado of array){
 
         let fila = document.createElement ("tr");
@@ -170,21 +174,36 @@ function mostrar_tabla (){
 
     }     
 
-let btn_borrar = document.querySelectorAll (".borrar_elemento");
+
+let btn_borrar = document.querySelectorAll(".borrar_elemento");
+
+console.log (btn_borrar)
 
 for (let btn of btn_borrar){
     btn.addEventListener ("click", borrar_elemento);
+
 }
 
 }
 
 function borrar_elemento (e){
+    console.log ("sacar a la mierda esto", e.target) 
+    e.target.parentNode.parentNode.remove();
 
-let abuelo = e.target.parentNode.parentNode;
 
-abuelo.remove ()
-
-console.log (array);
-
+    array.pop();
+    console.log (array);
+      
 
 }
+
+function limpiarFormulario() {
+    document.getElementById("ingreso1").reset();
+    document.getElementById("ingreso2").reset();
+    document.getElementById("ingreso3").reset();
+  }
+
+
+
+
+  
