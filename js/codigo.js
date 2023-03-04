@@ -1,11 +1,12 @@
 
 class socio_dynamoclub {
 
-    constructor (nombre,apellido,codigo){
+    constructor (nombre,apellido,codigo,puntaje){
     
     this.nombre = nombre;
     this.apellido = apellido;
     this.codigo = codigo;
+    this.puntos_acumulados= puntaje
 
 }
 }
@@ -13,21 +14,32 @@ class socio_dynamoclub {
 
 let lista_socios = [];
 
-lista_socios.push( new socio_dynamoclub ("Roberto","Garcia", 25637));              
-lista_socios.push( new socio_dynamoclub ("Claudia", "Romero",23457));
-lista_socios.push( new socio_dynamoclub ("Pablo", "Aranda", 35788,)); 
-lista_socios.push( new socio_dynamoclub  ("Lorena", "Silva", 45122,));
+lista_socios.push( new socio_dynamoclub ("Roberto","Garcia", 25637,455));              
+lista_socios.push( new socio_dynamoclub ("Claudia", "Romero",23457, 723));
+lista_socios.push( new socio_dynamoclub ("Pablo", "Aranda", 35788,320)); 
+lista_socios.push( new socio_dynamoclub  ("Lorena", "Silva", 45122,123));
+
+localStorage.setItem("lista_socios", JSON.stringify(lista_socios));
+
+console.log (lista_socios)
+
+
 
 
 function validar_socio (){
 
-    const codigo_usuario = document.getElementById ("codigo_usuario").value;
+
+let lista_socios_guardada = JSON.parse(localStorage.getItem("lista_socios"));
+
+console.log (lista_socios_guardada);
+
+    const codigo = document.getElementById ("codigo_usuario").value;
     let mensaje = document.getElementById ("mensaje");
      
-    for (let value in lista_socios ){
+    for (let codigo in lista_socios_guardada ){
     
-const socio = lista_socios.findIndex(socio_dynamoclub => socio_dynamoclub.codigo === parseInt(codigo_usuario));   
-    
+const socio = lista_socios_guardada.find(socio_dynamoclub => socio_dynamoclub.codigo === parseInt(codigo_usuario));   
+
     if (socio !== -1 ){
 
         document.body.innerHTML = `<p class = "bienvenido"> Código verificado </p>
@@ -53,14 +65,14 @@ let bienvenida = document.createElement ("p")
 
 bienvenida.innerText = "Bienvenido al simulador de puntos Dynamo"  
 bienvenida.style.fontSize = "45px"; 
-
-
 cabecera.append(bienvenida);
 
 
 //funcionalidad card Super//
 
-let array = [];
+let simulacion = [];
+
+localStorage.setItem("simulacion", JSON.stringify(simulacion)) || [];
 
 let boton_super = document.getElementById ("litros_super");
 boton_super.addEventListener("click",function() {
@@ -84,18 +96,24 @@ let resultado = {
 }  
 
 
+simulacion.push (resultado);
 
+localStorage.setItem("simulacion", JSON.stringify(simulacion));
 
-array.push (resultado);
-console.log (array);
+console.log (simulacion);
+console.log (resultado);
 
 mostrar_tabla();
 
+
+
+
+
 },
 )
- //acá iría un local storage//
 
-//funcionalidad card premium (que es igual a la otra pero con otros Id, rompiendo el paradigama KISS y el DRY, PERO NO ME SALIÓ DE OTRA MANERA y estoy aprendiendo :(
+
+//funcionalidad card premium (que es igual a la otra pero con otros Id
 
 let boton_premium = document.getElementById ("litros_premium");
 boton_premium.addEventListener("click", function() {  
@@ -118,8 +136,9 @@ let resultado_premium = {
 }  
 
 
-array.push (resultado_premium);
-console.log (array);
+simulacion.push (resultado_premium);
+localStorage.setItem("simulacion", JSON.stringify(simulacion));
+console.log (simulacion);
 
 mostrar_tabla();
 
@@ -147,8 +166,10 @@ let resultado_bio = {
     puntos: puntos,
 }  
 
-array.push (resultado_bio);
-console.log (array);
+simulacion.push (resultado_bio);
+localStorage.setItem("clave", JSON.stringify(simulacion));
+console.log (simulacion);
+
 
 mostrar_tabla();
 });
@@ -159,18 +180,18 @@ function mostrar_tabla (){
     tabla.innerHTML = "";
 
     
-    for (let resultado of array){
+    for (let resultado of simulacion){
 
         let fila = document.createElement ("tr");
         fila.innerHTML = 
         `<td> ${resultado.combustible} </td>
-         <td> ${resultado.Total_litros} </td>
-         <td> ${resultado.precio} </td>
-         <td> ${resultado.puntos} </td>
-         <td> <button class= "btn btn-warning borrar_elemento "> Borrar </button> </td>`
+        <td> ${resultado.Total_litros} </td>
+        <td> ${resultado.precio} </td>
+        <td> ${resultado.puntos} </td>
+        <td> <button class= "btn btn-warning borrar_elemento "> Borrar </button> </td>`
 
 
-         tabla.append(fila);
+        tabla.append(fila);
 
     }     
 
@@ -187,23 +208,18 @@ for (let btn of btn_borrar){
 }
 
 function borrar_elemento (e){
-    console.log ("sacar a la mierda esto", e.target) 
+    console.log ("objeto a eliminar", e.target) 
     e.target.parentNode.parentNode.remove();
 
-
-    array.pop();
-    console.log (array);
-      
-
+    simulacion.pop();
+    console.log (simulacion);
 }
 
 function limpiarFormulario() {
     document.getElementById("ingreso1").reset();
     document.getElementById("ingreso2").reset();
     document.getElementById("ingreso3").reset();
-  }
+}
 
 
 
-
-  
