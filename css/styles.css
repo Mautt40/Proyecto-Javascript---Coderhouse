@@ -200,6 +200,7 @@ td{
   border-radius: 30px;
 }
 .footer{
+  display: flex;
   margin-top: 50px;
   height: 300px;
   width:1863.2px;
