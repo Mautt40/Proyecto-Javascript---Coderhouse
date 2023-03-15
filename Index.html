@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     
     <title>plataforma Usuarios</title>
 </head>
@@ -13,36 +18,29 @@
 <body>
 
 <div class="parent">
+
   <div class="div1"> 
     <img src="img/Dynamo_logo.png" alt="logo"> 
   </div>
   
-  
-
   <div class="div2">
     <div class="container-fluid ">
       <h1>Ingrese el código de su tarjeta Dynamo Club  </h1>
     
-
-      
-      
       <input type="number" id="codigo_usuario" class ="codigo" minlength="5" >
       <br>
       <button onclick = "validar_socio()";> Validar </button>
       
       <br>
-      
-      <div id="mensaje">
+        <div id="mensaje">
+          <iframe src="https://petrointelligence.com/api/api_precios.html?consulta=nac"
+          frameborder="15"></iframe>
 
-      </div> 
-
-
+        </div> 
       </div>
-  
-      
 </div>
 
-
+<script src="sweetalert2.all.min.js"></script>
 <script src="js/codigo.js"> </script> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>

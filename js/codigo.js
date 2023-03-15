@@ -14,76 +14,84 @@ class socio_dynamoclub {
 
 let lista_socios = [];
 
-lista_socios.push( new socio_dynamoclub ("Roberto","Garcia", 25637,900));              
-lista_socios.push( new socio_dynamoclub ("Claudia", "Romero",23457, 723));
-lista_socios.push( new socio_dynamoclub ("Pablo", "Aranda", 35788, 589)); 
-lista_socios.push( new socio_dynamoclub  ("Carlos", "Plancton", 45122, 655));
+lista_socios.push( new socio_dynamoclub ("Roberto","Garcia", 25637,1345));              
+lista_socios.push( new socio_dynamoclub ("Claudia", "Romero",23457, 1800));
+lista_socios.push( new socio_dynamoclub ("Pablo", "Aranda", 35788, 687)); 
+lista_socios.push( new socio_dynamoclub  ("Carlos", "Benavidez", 45122, 1900));
 
 localStorage.setItem("lista_socios", JSON.stringify(lista_socios));
 
 console.log (lista_socios)
 
-
+const codigo_usuario = document.getElementById ("codigo_usuario");
 
 function validar_socio (){
 
 let lista_socios_guardada = JSON.parse(localStorage.getItem("lista_socios"));
-
-console.log (lista_socios_guardada);
-
-const codigo_usuario = document.getElementById ("codigo_usuario").value;
-const socio = lista_socios_guardada.find(socio_dynamoclub => socio_dynamoclub.codigo === parseInt(codigo_usuario));   
-
-
-let mensaje = document.getElementById ("mensaje");
+let codigo_usuario = document.getElementById ("codigo_usuario").value;
+let socio = lista_socios_guardada.find(socio_dynamoclub => socio_dynamoclub.codigo === parseInt(codigo_usuario));   
 
 const {nombre,apellido,codigo,puntos_acumulados} = socio
+localStorage.setItem("socio", JSON.stringify(socio))
 
 if (socio ){
 
-
-mensaje.innerHTML = 
-
-`<p class = "bienvenido"> Código verificado </p>
-<br>
- 
-<a href = "pages/simulador.html"> INGRESAR A LA PLATAFORMA </a>`;
-
 console.log (nombre, apellido, codigo, puntos_acumulados);
+localStorage.setItem("codigo_usuario", JSON.stringify(codigo_usuario)) 
 
-
-
+Swal.fire({
+    title: 'Usuario registrado',
+    icon: 'success',
+    background: '#ffb310',
+    color:'black',
+    showCancelButton: true,
+    confirmButtonColor: ' #239430',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '<a href ="pages/simulador.html"> Ingresar </a>',
+  })
 
 }
 
 else {
-
-    mensaje.innerHTML = `<h2>Error de Usuario</h2>
-                        <p class= "estilo_parrafo"> Código de tarjeta no  registrado </p>
-                        <br>
-                        <a href ="index.html"> Volver </a>`;
+}
 }
 
-}
+//balace total<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<///
 
+const socio = JSON.parse(localStorage.getItem("socio"));
+console.log (socio)
+
+let mensaje = document.getElementById ("info");
+
+let resto_puntaje = (2000 - socio.puntos_acumulados)
+console.log (resto_puntaje)
+
+mensaje.innerHTML =
+`<br>
+<p class="usuario"> Bienvenido Usuario: >>>>>> "${socio.nombre} ${socio.apellido}" </p>
+<br>
+
+<p class= "puntaje"> Tienes  " ${socio.puntos_acumulados}" puntos acumulados hasta la fecha </p>
+<br>
+
+<p class= "premios"> ¡¡ Con tan solo ${resto_puntaje} puntos más accederías al catálogo de premios !!
+<br>`
 
 //funcionalidad card Super/
 
 let simulacion = [];
-
 localStorage.setItem("simulacion", JSON.stringify(simulacion)) || [];
 
 let boton_super = document.getElementById("litros_super");
 boton_super.addEventListener("click", function() {
 combustible = "DY.Super";    
 
-
 });
 
 let litros_super = document.getElementById("litros_super");
 litros_super.addEventListener ("change", function(e){ 
 
-precio = parseInt(e.target.value) * 125;
+precio = parseInt(e.target.value) * 21,89;
 puntos = parseInt(e.target.value) + 100;
 
 
@@ -94,9 +102,7 @@ let resultado = {
     puntos: puntos,
 }  
 
-
 simulacion.push (resultado);
-
 localStorage.setItem("simulacion", JSON.stringify(simulacion));
 
 console.log (simulacion);
@@ -117,7 +123,7 @@ combustible = "Premium";
 let litros_premium = document.getElementById ("litros_premium");
 litros_premium.addEventListener ("change", function(e){ 
 
-precio = parseInt(e.target.value) * 150;
+precio = parseInt(e.target.value) * 24,14;
 puntos = parseInt(e.target.value) + 150;
 
 let resultado_premium = {
@@ -127,7 +133,6 @@ let resultado_premium = {
     precio: precio,
     puntos: puntos,
 }  
-
 
 simulacion.push (resultado_premium);
 localStorage.setItem("simulacion", JSON.stringify(simulacion));
@@ -146,7 +151,7 @@ combustible = "biodiesel";
 let litros_bio = document.getElementById ("litros_bio");
 litros_bio.addEventListener ("change", function(e){ 
 
-precio = parseInt(e.target.value) * 180;
+precio = parseInt(e.target.value) * 23,72;
 puntos = parseInt(e.target.value) + 200;
 
 let resultado_bio = {
@@ -160,9 +165,10 @@ simulacion.push (resultado_bio);
 localStorage.setItem("clave", JSON.stringify(simulacion));
 console.log (simulacion);
 
-
 mostrar_tabla();
 });
+
+//-------------------------------------------------------//
 
 function mostrar_tabla (){
 
@@ -198,41 +204,18 @@ for (let btn of btn_borrar){
     btn.addEventListener ("click", borrar_elemento);
 }
 
-
 function borrar_elemento (e){
     
-
-    console.log ("elemento_eliminar", e.target) 
-    e.target.parentNode.parentNode.remove();
-    
-    simulacion.pop();
-    console.log (simulacion);
-
+console.log ("elemento_eliminar", e.target) 
+e.target.parentNode.parentNode.remove();
+simulacion.pop();
+console.log (simulacion);
 }
 
 document.getElementById("ingreso").reset();
-
-
-//balace total///
-
-
-//acá iría la info del socio//
-
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
+}
 
 //footer//
-
       let elemento1= document.getElementById ("burger");
       elemento1.addEventListener("mouseover", function(){
       elemento1.src = "../img/premio7.jpg";
@@ -277,4 +260,32 @@ document.getElementById("ingreso").reset();
     elemento4.src = "../img/premio4.jpg";
       
     })     
+
+
+    const clima = JSON.parse(localStorage.getItem("clima"))
+    let titular = document.getElementById ("clima")
+
+    function mostrar_posicion (posicion){
+    
+    let lat =  posicion.coords.latitude;
+    let long = posicion.coords.longitude;
+    let key = "4d690579657f5b22b2f1b6bd1ee34676";
+    
+ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric&lang=es`)
+ 
+ .then (response => response.json ())
+ //.then (data =>console.log (data))
+ .then (data => {
+ 
+  titular.innerHTML = 
+ `<p class="clima"> Ciudad : ${data.name} <br> 
+  Clima : ${data.weather[0].description} <br>
+  Humedad: ${data.main.humidity} % <br>
+  visibilidad :100% <br>  
+  ***Conduzca con cuidado*** </p>`
+ })
+
+
 }
+
+navigator.geolocation.getCurrentPosition(mostrar_posicion)

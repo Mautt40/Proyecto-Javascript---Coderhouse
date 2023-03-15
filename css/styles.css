@@ -18,6 +18,9 @@ body {
 
 }
 
+
+
+
 .parent {
   display : flex;
   flex-direction: column;
@@ -26,7 +29,13 @@ body {
   grid-column-gap: 2px;
   
   }
-  
+
+#alerta{
+  height: 100px;
+}
+
+
+
   .div1 { 
     background-color: rgba(3, 41, 3, 0.902);
     grid-area: 1 / 1;
@@ -74,8 +83,8 @@ body {
   
 #btn_validar{
   height: 55px;
-  background-color: rgb(5, 161, 24);
-  color: antiquewhite;
+  background-color: #239430;
+  color:antiquewhite;
 
 }
  #btn_validar:hover{
@@ -117,8 +126,11 @@ body {
 }
 
 #mensaje{
+  display: flex;
+  height: 150px ;
+  justify-content: center;
   
-  margin-right: 35px;
+
 
 }
 
@@ -141,13 +153,11 @@ body {
   margin-bottom: 20px;
 }
 
+
+
 a {
-  background-color: rgba(2, 51, 2, 0.877);
-  color: darkgoldenrod;
-  text-decoration: none;
-  color:rgb(248, 246, 246);
-  font-size: 35px;
-  text-align: center;
+  background-color: #ffb310 ;
+  font-size: 22px;
 }
 
 
@@ -156,26 +166,58 @@ p {
   margin-left: 60PX;
   color: antiquewhite;
   font-weight: bold;
-  font-family: Verdana
+  font-family: Verdana;
 }
 
-#cabecera{
+.cabecera{
   height: 100px;
+  color: aliceblue;
+  justify-content: center;
+} 
+
+
+.cabecera h1 {
+ 
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  font-size:42px ;
+  background-color: #060606;
+
+  
+
+
+
+}
+.usuario{
+  font-size: 25px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #ffb310;
 }
 
+.puntaje{
+  font-size: 25px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #ffb310;
+}
+
+.premios{
+  font-size: 25px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #ec6511;
+}
 
 .contenedor {
   
   padding: 25px;
   display: flex;
-  justify-content: center;
   margin-bottom: 40px;
 }
 
 
 .card-group{
-  
-  justify-content: space;
+  display: flex;
+  justify-content:space-around;
   margin-bottom: 50px;
   margin-top: 50px;
   
@@ -221,10 +263,6 @@ padding: 6px 12px;
   margin-left: 5px;
   background-color: rgba(28, 47, 21, 0.925);
   width: 800px;
-  
-  
-  
-  
 
 }
 
@@ -304,9 +342,10 @@ td{
 
 
 #info {
-  height: 200px;
-  background-color: rgba(3, 3, 3, 0.685);
-  color: aliceblue;
+  height: 250px;
+  background-color: rgb(3, 3, 3);
+  color: rgb(233, 249, 8);
+  justify-content: center;
   
 }
 
@@ -319,6 +358,40 @@ td{
   height: 300px;
   width:1176.px;
   justify-content: space-around;
-  background-color: #055411bd;
+  background-color: #03540fbd;
   box-sizing: border-box;
+}
+
+.swal2-popup{
+
+background-color: #ffb310;;
+color:#040404;
+height: 300px;
+
+}
+
+iframe {
+
+  width: 400px;
+  margin-left: auto;
+  
+  
+
+
+}
+
+button { background-color: #ffb310;}
+
+#clima {
+  display: flex;
+  height: 170px;
+  text-align: center;
+  margin-top: 10px;
+  background-color: #ffb31098;
+  justify-content: center; 
+}
+.clima{
+  font-size: 22px;
+  color:#000000;
+
 }
